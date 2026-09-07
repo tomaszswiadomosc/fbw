@@ -1,0 +1,1092 @@
+<title>Cykl FBW 79</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#E9EBEE; --surface:#FBFCFD; --surface-2:#F1F3F6;
+  --ink:#12161B; --ink-2:#4A525C; --ink-3:#7C858F;
+  --line:#D2D7DE; --line-soft:#E0E4EA;
+  --accent:#1D5FA5; --accent-soft:#DCE7F3;
+  --red:#A83530; --red-soft:#F3DEDC;
+  --yellow:#996A05; --yellow-soft:#F4E8CE;
+  --green:#1B6B48; --green-soft:#DBEBE2;
+  --field:#FFFFFF; --field-line:#C3CAD3;
+  --shadow:0 1px 2px rgba(18,22,27,.06), 0 6px 18px -12px rgba(18,22,27,.28);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1216; --surface:#161B21; --surface-2:#1C232B;
+    --ink:#E4E8ED; --ink-2:#A0A9B4; --ink-3:#6C7681;
+    --line:#28313A; --line-soft:#212932;
+    --accent:#5A9BE0; --accent-soft:#152738;
+    --red:#DC625B; --red-soft:#2E1B1A;
+    --yellow:#DDA531; --yellow-soft:#2C2314;
+    --green:#42AC7D; --green-soft:#13271F;
+    --field:#0B0F13; --field-line:#333E49;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 22px -14px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1216; --surface:#161B21; --surface-2:#1C232B;
+  --ink:#E4E8ED; --ink-2:#A0A9B4; --ink-3:#6C7681;
+  --line:#28313A; --line-soft:#212932;
+  --accent:#5A9BE0; --accent-soft:#152738;
+  --red:#DC625B; --red-soft:#2E1B1A;
+  --yellow:#DDA531; --yellow-soft:#2C2314;
+  --green:#42AC7D; --green-soft:#13271F;
+  --field:#0B0F13; --field-line:#333E49;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 22px -14px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;text-wrap:balance;margin:0;letter-spacing:-.015em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+
+.topbar{position:sticky;top:0;z-index:50;background:var(--ground);
+  background:color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1000px;margin:0 auto;padding:0 22px;display:flex;align-items:center;
+  gap:18px;height:50px;overflow-x:auto;scrollbar-width:none}
+.topbar-in::-webkit-scrollbar{display:none}
+.brand{font-family:Archivo,sans-serif;font-weight:800;font-size:13px;letter-spacing:.06em;
+  text-transform:uppercase;white-space:nowrap;color:var(--ink)}
+.topbar nav{display:flex;gap:16px;white-space:nowrap}
+.topbar nav a{font-size:12.5px;color:var(--ink-3);text-decoration:none;font-weight:500;
+  padding:2px 0;border-bottom:1.5px solid transparent;transition:color .15s,border-color .15s}
+.topbar nav a:hover,.topbar nav a:focus-visible{color:var(--ink);border-bottom-color:var(--accent)}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px 90px}
+
+header.hero{padding:52px 0 34px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3)}
+h1{font-size:clamp(38px,7.2vw,62px);font-weight:800;line-height:.98;margin:12px 0 0;letter-spacing:-.03em}
+.hero p.lead{margin:16px 0 0;max-width:60ch;color:var(--ink-2);font-size:16.5px}
+.statstrip{display:flex;flex-wrap:wrap;margin-top:30px;border:1px solid var(--line);
+  border-radius:3px;background:var(--surface);overflow:hidden}
+.statstrip div{flex:1 1 118px;padding:11px 14px;border-right:1px solid var(--line-soft)}
+.statstrip div:last-child{border-right:0}
+.statstrip dt{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+  font-family:"IBM Plex Mono",monospace}
+.statstrip dd{margin:2px 0 0;font-family:Archivo,sans-serif;font-weight:700;font-size:17px}
+
+section{padding-top:52px}
+h2{font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);
+  padding-bottom:9px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;
+  justify-content:space-between;gap:14px}
+h2 span{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;letter-spacing:.08em;
+  color:var(--ink-3);text-transform:none}
+.sec-lead{margin:18px 0 0;max-width:66ch;color:var(--ink-2)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:20px;margin-top:22px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:16px 18px}
+.note h4{font-size:14px;font-weight:700;margin-bottom:5px}
+.note p{margin:0;font-size:14.5px;color:var(--ink-2)}
+.note ul{margin:6px 0 0;padding-left:17px;font-size:14.5px;color:var(--ink-2)}
+.note li{margin:3px 0}
+.note li::marker{color:var(--ink-3)}
+
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:24px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:11px 9px 13px;min-height:112px;display:flex;flex-direction:column;gap:5px}
+.day .dn{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.day .dt{font-family:Archivo,sans-serif;font-weight:800;font-size:16px;line-height:1.1}
+.day .dd{font-size:12px;color:var(--ink-2);line-height:1.35}
+.day.lift{border-top:3px solid var(--accent)}
+.day.cardio{border-top:3px solid var(--green)}
+.day.off{border-top:3px solid var(--line);background:var(--surface-2)}
+.day.off .dt{color:var(--ink-3)}
+@media(max-width:820px){.week{grid-template-columns:repeat(2,1fr)}.day{min-height:0}}
+
+.scroller{overflow-x:auto;margin-top:24px;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+thead th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:10.5px;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);padding:11px 14px;
+  border-bottom:1px solid var(--line);white-space:nowrap}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody th{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-soft);
+  font-weight:600;font-size:14px;white-space:nowrap}
+tbody tr:last-child th{border-bottom:0}
+td.num,th.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;
+  padding:2px 7px;border-radius:2px;font-weight:500;white-space:nowrap}
+.chip.b1{background:var(--green-soft);color:var(--green)}
+.chip.b2{background:var(--accent-soft);color:var(--accent)}
+.chip.b3{background:var(--red-soft);color:var(--red)}
+.chip.b4{background:var(--yellow-soft);color:var(--yellow)}
+
+/* ---------- sessions ---------- */
+.sessions{display:flex;flex-direction:column;gap:26px;margin-top:26px}
+.session{background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  box-shadow:var(--shadow);overflow:hidden}
+.session>header{padding:15px 20px;border-bottom:1px solid var(--line);display:flex;
+  align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--surface-2)}
+.session>header .lhs{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sess-tag{font-family:Archivo,sans-serif;font-weight:800;font-size:22px;line-height:1;letter-spacing:-.02em}
+.sess-day{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3)}
+.sess-focus{font-size:13.5px;color:var(--ink-2)}
+
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 22px;align-items:start;
+  padding:12px 20px;border-bottom:1px solid var(--line-soft)}
+.row:last-child{border-bottom:0}
+.row.super{background:linear-gradient(90deg,var(--accent-soft) 0 3px,transparent 3px)}
+.pat{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:1px}
+.ex{font-weight:600;font-size:15px;line-height:1.35}
+.cue{font-size:13px;color:var(--ink-3);margin-top:2px;line-height:1.45}
+.load{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:13px;
+  text-align:right;white-space:nowrap;color:var(--ink-2)}
+.load b{color:var(--ink);font-weight:600}
+@media(max-width:560px){.row{grid-template-columns:1fr}.load{text-align:left;margin-top:2px}}
+.ssbar{padding:7px 20px;background:var(--accent-soft);font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  border-bottom:1px solid var(--line-soft)}
+
+/* ---------- dziennik / log ---------- */
+.ctrlbar{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:24px;
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:15px 18px}
+.ctrl{display:flex;flex-direction:column;gap:4px}
+.ctrl label{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.ctrl select,.ctrl input{font-family:"IBM Plex Mono",monospace;font-size:14px;padding:7px 9px;
+  background:var(--field);color:var(--ink);border:1px solid var(--field-line);border-radius:3px;
+  min-height:38px}
+.ctrl select{min-width:130px}
+.ctrlbar .spacer{flex:1 1 auto}
+.syncdot{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-3);
+  font-family:"IBM Plex Mono",monospace;padding-bottom:9px}
+.syncdot i{width:7px;height:7px;border-radius:50%;background:var(--ink-3);display:inline-block;flex:none}
+.syncdot.on i{background:var(--green)}
+.syncdot.local i{background:var(--yellow)}
+
+.logsession{margin-top:20px}
+.logrow{padding:14px 20px;border-bottom:1px solid var(--line-soft)}
+.logrow:last-child{border-bottom:0}
+.logrow.super{background:linear-gradient(90deg,var(--accent-soft) 0 3px,transparent 3px)}
+.logrow .top{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+.logrow .rx{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+.logrow .rx b{color:var(--ink);font-weight:600}
+.prev{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-top:5px}
+.prev b{color:var(--accent);font-weight:600}
+.sets{display:flex;flex-direction:column;gap:6px;margin-top:6px;max-width:440px}
+.setline{display:grid;grid-template-columns:26px repeat(3,minmax(58px,1fr)) 56px;gap:7px;align-items:center}
+.setline .sn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);text-align:center}
+.setline input{width:100%;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-size:15px;padding:8px 8px;background:var(--field);color:var(--ink);
+  border:1px solid var(--field-line);border-radius:3px;min-height:40px;text-align:center}
+.setline input::placeholder{color:var(--ink-3);font-size:12px;letter-spacing:.04em}
+.setline input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 2px var(--accent-soft)}
+.setline .e1{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);
+  text-align:right;white-space:nowrap}
+.setheads{display:grid;grid-template-columns:26px repeat(3,minmax(58px,1fr)) 56px;gap:7px;max-width:440px;
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:9px}
+.setheads span{text-align:center}
+.setheads span:first-child{text-align:center}
+.notefield{width:100%;max-width:640px;margin-top:9px;font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;
+  padding:7px 9px;background:var(--field);color:var(--ink);border:1px solid var(--field-line);
+  border-radius:3px;resize:vertical;min-height:36px}
+.donebar{padding:13px 20px;background:var(--surface-2);border-top:1px solid var(--line);
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
+.btn{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 14px;border-radius:3px;border:1px solid var(--field-line);background:var(--field);
+  color:var(--ink);cursor:pointer;min-height:38px}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{opacity:.9;color:#fff}
+
+/* ---------- progres ---------- */
+.progpick{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:24px}
+.chartbox{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:18px 18px 12px;overflow-x:auto}
+.chartbox svg{display:block;min-width:520px;width:100%;height:auto}
+.empty{color:var(--ink-3);font-size:14px;padding:22px 0;text-align:center;
+  font-family:"IBM Plex Mono",monospace}
+.miniheads{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3)}
+.miniheads b{color:var(--ink);font-weight:600;font-size:15px;display:block;
+  font-family:Archivo,sans-serif}
+
+.callout{margin-top:24px;border-left:3px solid var(--yellow);background:var(--yellow-soft);
+  padding:14px 18px;border-radius:0 3px 3px 0}
+.callout p{margin:0;font-size:14.5px;color:var(--ink)}
+.callout strong{font-weight:600}
+ol.steps{margin:22px 0 0;padding-left:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding-left:38px;margin-bottom:13px;
+  color:var(--ink-2);font-size:14.8px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;width:23px;height:23px;
+  border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+  color:var(--ink-3);background:var(--surface)}
+ol.steps li strong{color:var(--ink);font-weight:600}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="brand">Cykl FBW 79</span>
+    <nav>
+      <a href="#dziennik">Dziennik</a>
+      <a href="#progres">Progres</a>
+      <a href="#zasady">Zasady</a>
+      <a href="#tydzien">Tydzień</a>
+      <a href="#bloki">Bloki</a>
+      <a href="#sesje">Sesje</a>
+      <a href="#rozgrzewka">Rozgrzewka</a>
+      <a href="#cardio">Cardio</a>
+      <a href="#progresja">Progresja</a>
+      <a href="#deload">Deload</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Full Body Workout · 12 tygodni · A / B / A′ / B′</div>
+  <h1>Cykl FBW 79</h1>
+  <p class="lead">Cztery sesje całego ciała w tygodniu, każda zbudowana na tych samych siedmiu wzorcach ruchowych. Bój główny na siłę, superserie na masę, blok mocy na starcie i praca tlenowa w dni pomiędzy. Dwanaście tygodni, trzy bloki, jeden test na końcu.</p>
+  <dl class="statstrip">
+    <div><dt>Masa ciała</dt><dd>79 kg</dd></div>
+    <div><dt>Wiek</dt><dd>27 lat</dd></div>
+    <div><dt>Sesje / tydz.</dt><dd>4 × 75 min</dd></div>
+    <div><dt>Cardio / tydz.</dt><dd>2 × 40–50 min</dd></div>
+    <div><dt>Serie robocze</dt><dd>112 / tydz.</dd></div>
+    <div><dt>Długość</dt><dd>12 tyg.</dd></div>
+  </dl>
+</header>
+
+<section id="dziennik">
+  <h2>Dziennik treningowy <span id="blockLabel">—</span></h2>
+  <p class="sec-lead">Wybierz tydzień, datę i sesję — serie i powtórzenia same ustawią się pod aktualny blok. Wpisujesz ciężar, powtórzenia i RIR; zapis idzie natychmiast, bez żadnego przycisku. Pod każdym ćwiczeniem widzisz, co zrobiłeś ostatnim razem.</p>
+
+  <div class="ctrlbar">
+    <div class="ctrl">
+      <label for="selWeek">Tydzień</label>
+      <select id="selWeek"></select>
+    </div>
+    <div class="ctrl">
+      <label for="selDate">Data</label>
+      <input type="date" id="selDate">
+    </div>
+    <div class="ctrl">
+      <label for="selSess">Sesja</label>
+      <select id="selSess"></select>
+    </div>
+    <div class="spacer"></div>
+    <div class="syncdot" id="syncDot"><i></i><span>łączenie…</span></div>
+  </div>
+
+  <div class="session logsession">
+    <header>
+      <div class="lhs">
+        <span class="sess-tag" id="logTag">—</span>
+        <span class="sess-day" id="logDay"></span>
+      </div>
+      <span class="sess-focus" id="logFocus"></span>
+    </header>
+    <div id="logRows"></div>
+    <div class="donebar">
+      <button class="btn" id="btnClear" type="button">Wyczyść tę sesję</button>
+      <button class="btn" id="btnCsv" type="button">Eksport CSV</button>
+      <span id="saveState">—</span>
+    </div>
+  </div>
+</section>
+
+<section id="progres">
+  <h2>Progres <span>szacowany 1RM w czasie</span></h2>
+  <p class="sec-lead">Wykres liczy e1RM ze wzoru Epleya — ciężar × (1 + powtórzenia ÷ 30) — z najlepszej serii każdej sesji. To pozwala porównywać tygodnie, w których robisz 6 powtórzeń, z tymi, w których robisz 3.</p>
+  <div class="progpick">
+    <div class="ctrl">
+      <label for="selEx">Ćwiczenie</label>
+      <select id="selEx"></select>
+    </div>
+  </div>
+  <div class="chartbox">
+    <div class="miniheads" id="progStats"></div>
+    <div id="chartHost"></div>
+  </div>
+  <div class="scroller" id="histBox"></div>
+</section>
+
+<section id="zasady">
+  <h2>Zasady cyklu <span>dlaczego to wygląda właśnie tak</span></h2>
+  <p class="sec-lead">FBW działa, bo synteza białek mięśniowych po treningu trwa u większości ludzi około 48 godzin. Trenując każdą grupę cztery razy w tygodniu, praktycznie nie wychodzisz z okna adaptacji. Cena za to jest jedna: żadna pojedyncza sesja nie może być rzezią — objętość jest rozłożona, nie skumulowana.</p>
+  <div class="grid2">
+    <div class="note">
+      <h4>Siedem wzorców, nie „partie”</h4>
+      <p>Przysiad, wykrok / praca jednonóż, zawias biodrowy, pchanie poziome, pchanie pionowe, ciągnięcie poziome, ciągnięcie pionowe — plus core. W 75 minutach jedna sesja pokrywa pięć z nich; para kolejnych dni domyka komplet, a w skali tygodnia każdy wzorzec dostaje 2–3 wejścia. Nie planujesz „dnia klatki” — planujesz wzorce, a mięśnie dostają swoje przy okazji.</p>
+    </div>
+    <div class="note">
+      <h4>Kolejność: od najcięższego</h4>
+      <p>Najwięcej siły masz w pierwszych 20 minutach, więc tam idzie bój główny — jedno ćwiczenie wielostawowe na maksymalnej jakości technicznej. Dalej praca w superseriach na antagonistach, na końcu izolacja i core, gdzie brak świeżości nic nie psuje.</p>
+    </div>
+    <div class="note">
+      <h4>Superserie zamiast dłuższego treningu</h4>
+      <p>Pary antagonistyczne (pchanie ⟷ ciągnięcie) pozwalają wcisnąć dwukrotnie więcej pracy w te same 75 minut, bez utraty jakości — gdy pracuje klatka, plecy odpoczywają. To także podnosi gęstość treningu, co bezpośrednio pracuje na wydolność.</p>
+    </div>
+    <div class="note">
+      <h4>RIR zamiast procentów</h4>
+      <p>RIR = ile powtórzeń zostawiasz w zapasie. RIR 2 znaczy: mógłbyś zrobić jeszcze dwa. Ta skala jest odporna na gorszy sen i stres, w przeciwieństwie do sztywnych procentów z 1RM. Ostatnia seria każdego ćwiczenia zawsze o jeden RIR niżej niż poprzednie.</p>
+    </div>
+    <div class="note">
+      <h4>Blok mocy na starcie</h4>
+      <p>Cztery serie po trzy powtórzenia czegoś eksplozywnego, zanim dotkniesz sztangi. To nie zmęczenie — to pobudzenie układu nerwowego, które podnosi jakość boju głównego, i jedyny moment w tygodniu, gdy trenujesz szybkość, a nie tylko siłę.</p>
+    </div>
+    <div class="note">
+      <h4>Mobilność jest wpleciona, nie doklejona</h4>
+      <p>Osiem minut przed każdą sesją i piętnaście w dni cardio. Zakres ruchu, który zbudujesz w rozgrzewce, i tak zweryfikuje pierwsza seria przysiadu — dlatego mobilność stoi tam, gdzie od razu ją wykorzystasz.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tydzien">
+  <h2>Rozkład tygodnia <span>2 dni pracy → przerwa → 2 dni pracy</span></h2>
+  <p class="sec-lead">Siła w poniedziałek–wtorek i czwartek–piątek, tlen w środku i na końcu. Cardio nigdy nie ląduje w tym samym oknie 6 godzin co sesja siłowa — w przeciwnym razie zaczyna zjadać adaptację siłową (efekt interferencji).</p>
+  <div class="week">
+    <div class="day lift"><span class="dn">Pon</span><span class="dt">A</span><span class="dd">Przysiad · pchanie poziome</span></div>
+    <div class="day lift"><span class="dn">Wt</span><span class="dt">B</span><span class="dd">Pchanie pionowe · góra</span></div>
+    <div class="day cardio"><span class="dn">Śr</span><span class="dt">Tlen</span><span class="dd">Zone 2 · 40–50 min + mobilność 15 min</span></div>
+    <div class="day lift"><span class="dn">Czw</span><span class="dt">A′</span><span class="dd">Zawias · tylna taśma</span></div>
+    <div class="day lift"><span class="dn">Pt</span><span class="dt">B′</span><span class="dd">Objętość · jednostronność</span></div>
+    <div class="day cardio"><span class="dn">Sob</span><span class="dt">Tlen</span><span class="dd">Zone 2 długie lub interwały</span></div>
+    <div class="day off"><span class="dn">Nd</span><span class="dt">Off</span><span class="dd">Spacer · mobilność · sen</span></div>
+  </div>
+</section>
+
+<section id="bloki">
+  <h2>Trzy bloki, jedna fala <span>od objętości do ekspresji siły</span></h2>
+  <p class="sec-lead">Ćwiczenia zostają te same przez cały cykl — zmieniają się serie, powtórzenia, RIR i przerwy. To ty masz się zmieniać, nie plan. Powtarzanie tych samych ruchów przez 11 tygodni daje czystą progresję obciążenia i realne uczenie się techniki, czego nie da żadna rotacja co dwa tygodnie.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Blok</th><th>Tygodnie</th><th>Bój główny</th><th>Superseria 1</th><th>Superseria 2</th><th>Superseria 3</th><th>Przerwy</th></tr></thead>
+      <tbody id="blockTable"></tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p><strong>Blok mocy</strong> przechodzi tę samą falę: 4 × 3 w bloku 1, 5 × 3 w bloku 2, 5 × 3 z lekkim obciążeniem zewnętrznym w bloku 3. Nigdy nie idziesz w nim na zmęczenie — jeśli trzecie powtórzenie jest wolniejsze od pierwszego, seria była o jedno za długa.</p>
+  </div>
+</section>
+
+<section id="sesje">
+  <h2>Cztery sesje <span id="sesLabel">—</span></h2>
+  <p class="sec-lead">Pełna referencja doboru ćwiczeń, kolejności i par superserii. Serie i powtórzenia po prawej podążają za tygodniem wybranym w dzienniku powyżej.</p>
+  <div class="sessions" id="refSessions"></div>
+</section>
+
+<section id="rozgrzewka">
+  <h2>Rozgrzewka i mobilność <span>8 min przed sesją · 15 min w dni cardio</span></h2>
+  <div class="grid2">
+    <div class="note">
+      <h4>Przed każdą sesją siłową — 8 min</h4>
+      <ul>
+        <li>Rower lub wioślarz, lekko — <span class="mono">3 min</span></li>
+        <li>Koci grzbiet (cat-cow) — <span class="mono">8 powt.</span></li>
+        <li>Pozycja 90/90 z rotacją bioder — <span class="mono">6 / stronę</span></li>
+        <li>Klęk z rozciągnięciem zginaczy + wyciągnięcie ramienia — <span class="mono">6 / stronę</span></li>
+        <li>Rotacja piersiowa w podporze (thread the needle) — <span class="mono">6 / stronę</span></li>
+        <li>Zwis na drążku — <span class="mono">30 s</span></li>
+        <li>Band pull-apart — <span class="mono">15 powt.</span></li>
+        <li>Wzorzec dnia: goblet squat hold <span class="mono">30 s</span> (dni A, B′) lub hip hinge z kijem <span class="mono">10 powt.</span> (dni B, A′)</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h4>Blok mobilności — środa i niedziela, 15 min</h4>
+      <ul>
+        <li>ATG split squat, bez obciążenia — <span class="mono">8 / stronę</span></li>
+        <li>Cossack squat — <span class="mono">8 / stronę</span></li>
+        <li>Jefferson curl z lekkim hantlem — <span class="mono">3 × 6</span></li>
+        <li>Couch stretch — <span class="mono">90 s / stronę</span></li>
+        <li>Rotacja piersiowa leżąc na boku — <span class="mono">10 / stronę</span></li>
+        <li>Zgięcie grzbietowe stopy przy ścianie — <span class="mono">10 / stronę</span></li>
+        <li>Dead hang — <span class="mono">3 × 45 s</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="cardio">
+  <h2>Wydolność tlenowa <span>HRmax ≈ 193 · Zone 2 = 116–135 uderzeń</span></h2>
+  <p class="sec-lead">Baza tlenowa to nie jest dodatek do treningu siłowego — to jest to, co pozwala szybciej regenerować się między seriami i między sesjami. Większy rzut serca i gęstsza sieć naczyń włosowatych oznaczają, że ta sama superseria kosztuje cię mniej.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Blok</th><th>Środa</th><th>Sobota</th><th>Kontrola</th></tr></thead>
+      <tbody>
+        <tr><th><span class="chip b1">Blok 1</span></th>
+          <td>Zone 2 — <span class="mono">40 min</span>, rower / wioślarz / marszobieg</td>
+          <td>Zone 2 — <span class="mono">45 min</span>, inna modalność niż w środę</td>
+          <td>Oddech przez nos przez cały czas. Jeśli musisz otworzyć usta — zwolnij.</td></tr>
+        <tr><th><span class="chip b2">Blok 2</span></th>
+          <td>Zone 2 — <span class="mono">45 min</span></td>
+          <td>Interwały — <span class="mono">8 × (30 s / 90 s)</span> + 10 min rozgrzewki</td>
+          <td>Notuj dystans. Spadek powyżej 10% między pierwszym a ostatnim = za mocno wystartowałeś.</td></tr>
+        <tr><th><span class="chip b3">Blok 3</span></th>
+          <td>Zone 2 — <span class="mono">50 min</span></td>
+          <td>Interwały — <span class="mono">6 × (60 s / 2 min)</span></td>
+          <td>Tętno spoczynkowe rano. Trend spadkowy przez cykl = adaptacja idzie w dobrą stronę.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p><strong>Zasada rozdziału:</strong> minimum 6 godzin między sesją siłową a cardio, a interwały nigdy w dniu poprzedzającym trening z martwym ciągiem lub przysiadem ze sztangą. Dlatego interwały siedzą w sobotę — po nich masz niedzielę wolną.</p>
+  </div>
+</section>
+
+<section id="progresja">
+  <h2>Progresja obciążeń <span>przy Twoim poziomie: liniowa, tydzień po tygodniu</span></h2>
+  <p class="sec-lead">Masz dziesięć lat aktywności, ale ciężary robocze poniżej średniej dla tej masy ciała — to najlepsza możliwa sytuacja startowa. Możesz jechać czystą progresją liniową przez cały cykl, zamiast falować obciążenie z tygodnia na tydzień jak zawodnik z 15-letnim stażem pod sztangą.</p>
+  <ol class="steps">
+    <li><strong>Tydzień 1 to kalibracja, nie trening.</strong> Dobierz ciężary tak, żeby wszystkie serie kończyły się przy RIR 3, i wpisz je do dziennika. To jest twoja baza — świadomie zaniżona.</li>
+    <li><strong>Bój główny dolny</strong> (przysiad, martwy ciąg, front squat): <span class="mono">+2,5 do +5 kg</span> co tydzień, dopóki utrzymujesz zadany RIR i technikę.</li>
+    <li><strong>Bój główny górny</strong> (wyciskanie żołnierskie, wyciskanie leżąc): <span class="mono">+1,25 do +2,5 kg</span> co tydzień. Góra rośnie wolniej — to normalne, nie problem.</li>
+    <li><strong>Ćwiczenia w superseriach:</strong> gdy wykonasz górny zakres powtórzeń we wszystkich seriach przy zadanym RIR — następnym razem dokładasz <span class="mono">+2,5 kg</span> (lub jeden hantel wyżej) i wracasz do dolnego zakresu.</li>
+    <li><strong>Przy przejściu między blokami</strong> obciążenie na boju głównym idzie w górę razem ze spadkiem powtórzeń: z 4 × 6 na 5 × 4 dokładasz około <span class="mono">7–10%</span>, z 5 × 4 na 5 × 3 kolejne <span class="mono">4–6%</span>.</li>
+    <li><strong>Reset:</strong> jeśli dwa tygodnie z rzędu nie domykasz zadanych powtórzeń przy właściwym RIR — cofnij ciężar o <span class="mono">10%</span> i buduj ponownie. To nie jest porażka, to jest mechanizm planu.</li>
+    <li><strong>Wykres e1RM w sekcji Progres jest twoim arbitrem.</strong> Jeśli linia stoi płasko przez trzy tygodnie mimo dokładania kilogramów, to znaczy, że RIR się rozjechał — wracasz do uczciwej oceny zapasu, nie do cięższej sztangi.</li>
+  </ol>
+  <div class="grid2">
+    <div class="note">
+      <h4>Objętość tygodniowa — co dostaje każda grupa</h4>
+      <ul>
+        <li>Czworogłowe — <span class="mono">14 serii</span></li>
+        <li>Pośladki i dwugłowe uda — <span class="mono">13 serii</span> + praca jednonóż</li>
+        <li>Plecy (pion + poziom + tylny akton) — <span class="mono">24 serie</span></li>
+        <li>Klatka piersiowa — <span class="mono">9 serii</span> + pośrednio z pchania pionowego</li>
+        <li>Barki (bok i przód) — <span class="mono">13 serii</span></li>
+        <li>Biceps — <span class="mono">9</span> · Triceps — <span class="mono">6</span> + pośrednio z bojów</li>
+        <li>Core — <span class="mono">15 serii</span> · Łydki — <span class="mono">6 serii</span></li>
+      </ul>
+    </div>
+    <div class="note">
+      <h4>Żywienie i regeneracja — minimum, które musi grać</h4>
+      <ul>
+        <li>Białko: <span class="mono">1,8–2,2 g/kg</span> = <strong>145–175 g dziennie</strong></li>
+        <li>Węglowodany w dni treningowe: <span class="mono">4–6 g/kg</span> = <strong>320–480 g</strong></li>
+        <li>Kalorie: <span class="mono">+200 do +300 kcal</span> ponad zapotrzebowanie, jeśli priorytetem jest masa; utrzymanie, jeśli chcesz równolegle ciąć wydolność</li>
+        <li>Sen: <span class="mono">7,5–9 h</span>. Przy czterech sesjach siłowych i dwóch tlenowych to jest pojedynczy czynnik, który decyduje najbardziej.</li>
+        <li>Kreatyna monohydrat <span class="mono">5 g</span> dziennie, codziennie, o dowolnej porze</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="deload">
+  <h2>Tydzień 12 — deload i testy <span>bez tego nie wiesz, czy cykl zadziałał</span></h2>
+  <p class="sec-lead">Pierwsze trzy dni tygodnia to rozładowanie: dwie sesje po około 60% normalnej objętości, RIR 4, bez bloku mocy, bez finiszerów. Potem, po dwóch dniach pełnej przerwy, testujesz.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Test</th><th>Protokół</th><th>Co mierzysz</th></tr></thead>
+      <tbody>
+        <tr><th>Przysiad ze sztangą</th><td class="num">3RM</td><td>Siła maksymalna dolna — porównaj z e1RM z wykresu</td></tr>
+        <tr><th>Martwy ciąg</th><td class="num">3RM</td><td>Siła tylnej taśmy i chwytu</td></tr>
+        <tr><th>Wyciskanie leżąc</th><td class="num">3RM</td><td>Siła pchania poziomego</td></tr>
+        <tr><th>Wyciskanie żołnierskie</th><td class="num">3RM</td><td>Siła pchania pionowego</td></tr>
+        <tr><th>Podciąganie nachwytem</th><td class="num">maks. powtórzeń</td><td>Relatywna siła ciągnięcia do masy ciała</td></tr>
+        <tr><th>Skok w dal z miejsca</th><td class="num">3 próby, najlepsza</td><td>Moc — porównaj z zapisem z tygodnia 1</td></tr>
+        <tr><th>Test Coopera</th><td class="num">12 min biegu, dystans</td><td>Wydolność tlenowa — powinna wzrosnąć o 5–10%</td></tr>
+        <tr><th>Tętno spoczynkowe</th><td class="num">3 poranki, średnia</td><td>Adaptacja sercowo-naczyniowa — trend w dół</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p><strong>Co dalej:</strong> jeśli progresja liniowa na bojach głównych trzymała do końca — powtórz cykl z nowymi ciężarami startowymi i podmienionymi bojami (przysiad z tyłu → hack lub przysiad przedni jako główny; żołnierskie → wyciskanie leżąc jako główny). Jeśli liniówka wygasła w bloku 2 — następny cykl buduj już na progresji falowanej z tygodniami lekkimi.</p>
+  </div>
+</section>
+
+<footer>
+  Plan ułożony pod profil: 27 lat, 79 kg, ponad 10 lat aktywności, brak kontuzji, pełna siłownia, 4 sesje po 75 minut. Metodyka FBW według wykładu Szymona Mosznego (wzorce ruchowe, zasada priorytetu, dobór objętości); progresja, bloki i dziennik dobrane do poziomu wyjściowego i celów: siła, masa, wydolność tlenowa, moc, mobilność.
+</footer>
+
+</div>
+
+<script>
+/* =================== DANE PLANU =================== */
+const BLOCKS = [
+  {id:1,name:"Akumulacja",chip:"b1",weeks:[1,2,3,4],
+   power:{sets:4,reps:"3"},
+   main:{sets:4,reps:"6",rir:"3→2",rest:"150 s"},
+   ss1:{sets:3,reps:"10",rir:"3→2",rest:"90 s"},
+   ss2:{sets:3,reps:"10",rir:"3→2",rest:"90 s"},
+   ss3:{sets:3,reps:"12–15",rir:"2→1",rest:"60 s"},
+   fin:{sets:3,rir:"—",rest:"45 s"}},
+  {id:2,name:"Intensyfikacja",chip:"b2",weeks:[5,6,7,8],
+   power:{sets:5,reps:"3"},
+   main:{sets:5,reps:"4",rir:"2→1",rest:"180 s"},
+   ss1:{sets:4,reps:"8",rir:"2→1",rest:"75 s"},
+   ss2:{sets:3,reps:"10",rir:"2",rest:"75 s"},
+   ss3:{sets:3,reps:"12–15",rir:"1",rest:"60 s"},
+   fin:{sets:3,rir:"—",rest:"45 s"}},
+  {id:3,name:"Ekspresja",chip:"b3",weeks:[9,10,11],
+   power:{sets:5,reps:"3"},
+   main:{sets:5,reps:"3",rir:"1→0",rest:"210 s"},
+   ss1:{sets:4,reps:"6",rir:"1",rest:"75 s"},
+   ss2:{sets:3,reps:"8",rir:"1",rest:"75 s"},
+   ss3:{sets:3,reps:"12",rir:"0–1",rest:"60 s"},
+   fin:{sets:3,rir:"—",rest:"45 s"}},
+  {id:4,name:"Deload + test",chip:"b4",weeks:[12],
+   power:{sets:0,reps:"—"},
+   main:{sets:3,reps:"3",rir:"4",rest:"180 s"},
+   ss1:{sets:2,reps:"8",rir:"4",rest:"90 s"},
+   ss2:{sets:2,reps:"8",rir:"4",rest:"90 s"},
+   ss3:{sets:0,reps:"—",rir:"—",rest:"—"},
+   fin:{sets:0,rir:"—",rest:"—"}}
+];
+const SLOT_LABEL={power:"Blok mocy",main:"Bój główny",ss1:"Superseria 1",ss2:"Superseria 2",ss3:"Superseria 3",fin:"Finisz"};
+
+const SESSIONS=[
+{id:"A",tag:"Dzień A",day:"Poniedziałek",dow:1,focus:"Akcent: przysiad + pchanie poziome",items:[
+ {slot:"power",pat:"Moc",ex:"Skok na skrzynię",xid:"box_jump",unit:"bw",cue:"Zeskok kontrolowany, nie odbijasz się z lądowania. Skrzynia na tyle wysoka, że musisz podciągnąć kolana."},
+ {slot:"main",pat:"Wzorzec: przysiad",ex:"Przysiad ze sztangą z tyłu",xid:"back_squat",cue:"2–3 serie rozgrzewkowe przed roboczymi. Biodro poniżej kolana, tułów sztywny."},
+ {ss:"Superseria 1 — pchanie ⟷ ciągnięcie poziome"},
+ {slot:"ss1",pat:"Pchanie poziome",ex:"Wyciskanie sztangi leżąc, ławka płaska",xid:"bench",cue:"Łopatki ściągnięte i schowane, klatka wypięta, nogi napięte."},
+ {slot:"ss1",pat:"Ciągnięcie poziome",ex:"Wiosłowanie sztangą podchwytem",xid:"bb_row",cue:"Tułów ~30° nad poziomem, sztanga do dolnych żeber. Bez zarzucania biodrem."},
+ {ss:"Superseria 2 — zawias ⟷ ciągnięcie pionowe"},
+ {slot:"ss2",pat:"Zawias biodrowy",ex:"Rumuński martwy ciąg (RDL)",xid:"rdl",cue:"Kolana lekko ugięte i zablokowane, ruch z bioder. Schodzisz do utraty neutralnego kręgosłupa, nie do ziemi."},
+ {slot:"ss2",pat:"Ciągnięcie pionowe",ex:"Podciąganie nachwytem",xid:"pullup_pron",unit:"bw",cue:"Jeśli nie robisz 8 czystych — guma lub maszyna grawitacyjna, powtórzenia liczysz normalnie."},
+ {ss:"Superseria 3 — izolacja"},
+ {slot:"ss3",pat:"Bark boczny",ex:"Wznosy bokiem hantlami",xid:"lat_raise_db",cue:"Łokieć prowadzi, nadgarstek nie wyżej niż łokieć. Lekko, czysto, bez bujania."},
+ {slot:"ss3",pat:"Biceps",ex:"Uginanie ramion sztangą łamaną",xid:"ez_curl",cue:"Łokcie przy tułowiu, pełne wyprostowanie na dole."},
+ {ss:"Finisz — core + carry"},
+ {slot:"fin",pat:"Core — dół brzucha",ex:"Wznosy nóg w zwisie",xid:"hang_leg",unit:"bw",reps:"10–15",cue:"Miednica podwija się do żeber. Bez rozbujania."},
+ {slot:"fin",pat:"Carry",ex:"Farmer's walk",xid:"farmer",unit:"m",reps:"40 m",cue:"Najcięższe hantle, jakie utrzymasz. Chwyt, tułów, kondycja naraz."}]},
+
+{id:"B",tag:"Dzień B",day:"Wtorek",dow:2,focus:"Akcent: pchanie pionowe + obręcz barkowa",items:[
+ {slot:"power",pat:"Moc",ex:"Wyrzut piłki lekarskiej znad głowy",xid:"mb_throw",cue:"Ruch startuje z bioder, nie z ramion. Piłka 4–6 kg."},
+ {slot:"main",pat:"Wzorzec: pchanie pionowe",ex:"Wyciskanie żołnierskie sztangą stojąc",xid:"ohp",cue:"Pośladki i brzuch napięte, żebra w dół. Głowa przechodzi pod sztangą na górze."},
+ {ss:"Superseria 1 — jednonóż ⟷ ciągnięcie pionowe"},
+ {slot:"ss1",pat:"Wykrok / jednonóż",ex:"Przysiad bułgarski z hantlami",xid:"bulgarian",reps:"10 / nogę",cue:"Siadasz na krawędzi ławki, żeby ustawić odległość. Tułów w linii z tylną nogą."},
+ {slot:"ss1",pat:"Ciągnięcie pionowe",ex:"Ściąganie drążka szerokim uchwytem",xid:"lat_pulldown",cue:"Klatka do drążka, łokcie w dół i do tyłu. Bez odchylania tułowia poza 15°."},
+ {ss:"Superseria 2 — pchanie poziome ⟷ tylny akton"},
+ {slot:"ss2",pat:"Pchanie poziome (góra klatki)",ex:"Wyciskanie hantli, ławka dodatnia 30°",xid:"incline_db",cue:"Pełny zakres, hantle schodzą do linii górnej części klatki."},
+ {slot:"ss2",pat:"Tylny akton barku",ex:"Face pull na wyciągu",xid:"face_pull",reps:"12–15",cue:"Linka na wysokość twarzy, rotacja zewnętrzna na końcu ruchu."},
+ {ss:"Superseria 3 — ramiona"},
+ {slot:"ss3",pat:"Triceps",ex:"Wyciskanie francuskie sztangą łamaną",xid:"skullcrusher",reps:"12",cue:"Łokcie stabilne, sztanga za głowę. Alternatywa: dipy na poręczach."},
+ {slot:"ss3",pat:"Biceps / ramienno-promieniowy",ex:"Uginanie młotkowe",xid:"hammer_curl",cue:"Chwyt neutralny — grubość ramienia i przedramię."},
+ {ss:"Finisz — core + łydki"},
+ {slot:"fin",pat:"Core — góra brzucha",ex:"Allachy na wyciągu górnym",xid:"cable_crunch",reps:"12–15",cue:"Zwijasz kręgosłup, nie zginasz się w biodrach."},
+ {slot:"fin",pat:"Łydki",ex:"Wspięcia na palce stojąc",xid:"calf_stand",reps:"12–15",cue:"Pauza sekunda w górze, pełne rozciągnięcie na dole."}]},
+
+{id:"A2",tag:"Dzień A′",day:"Czwartek",dow:4,focus:"Akcent: zawias biodrowy + tylna taśma",items:[
+ {slot:"power",pat:"Moc",ex:"Skok w dal z miejsca",xid:"broad_jump",unit:"m",reps:"3",cue:"Mierz odległość i wpisuj w pole ciężaru jako centymetry — to twój wskaźnik mocy. Miękkie lądowanie."},
+ {slot:"main",pat:"Wzorzec: zawias biodrowy",ex:"Martwy ciąg klasyczny (lub trap bar)",xid:"deadlift",cue:"Sztanga blisko goleni, plecy neutralne od startu. Trap bar, jeśli chcesz mniej obciążyć lędźwie."},
+ {ss:"Superseria 1 — pchanie ⟷ ciągnięcie poziome"},
+ {slot:"ss1",pat:"Pchanie poziome",ex:"Wyciskanie hantli na ławce płaskiej",xid:"flat_db",cue:"Większy zakres ruchu niż sztanga, bardziej przyjazne barkom."},
+ {slot:"ss1",pat:"Ciągnięcie poziome",ex:"Wiosłowanie hantlem jednorącz w opadzie",xid:"db_row",reps:"10 / stronę",cue:"Bez rotacji tułowia. Łokieć wzdłuż tułowia, hantel do biodra."},
+ {ss:"Superseria 2 — wykrok ⟷ ciągnięcie pionowe"},
+ {slot:"ss2",pat:"Wykrok / jednonóż",ex:"Wykroki chodzone z hantlami",xid:"walk_lunge",reps:"10 / nogę",cue:"Krok długi — pośladek. Krok krótki — czworogłowy. Wybierz jedno i trzymaj przez blok."},
+ {slot:"ss2",pat:"Ciągnięcie pionowe",ex:"Podciąganie podchwytem",xid:"pullup_sup",unit:"bw",cue:"Mocniej włącza biceps, zrobisz więcej powtórzeń niż nachwytem."},
+ {ss:"Superseria 3 — izolacja"},
+ {slot:"ss3",pat:"Tylny akton barku",ex:"Odwrotne rozpiętki",xid:"rear_delt",reps:"15",cue:"Lekko. Czujesz między łopatkami, nie w kapturowym."},
+ {slot:"ss3",pat:"Triceps",ex:"Prostowanie ramion na wyciągu (linka)",xid:"tri_pushdown",cue:"Rozejście linki na końcu ruchu, pełny skurcz."},
+ {ss:"Finisz — core antyruchowy"},
+ {slot:"fin",pat:"Anty-wyprost",ex:"Wyjazd na kółku (ab wheel)",xid:"ab_wheel",unit:"bw",reps:"8–12",cue:"Miednica podwinięta przez cały ruch."},
+ {slot:"fin",pat:"Anty-rotacja",ex:"Pallof press",xid:"pallof",reps:"10 / stronę",cue:"Wyciąg z boku, wypychasz ręce przed siebie i opierasz się rotacji."}]},
+
+{id:"B2",tag:"Dzień B′",day:"Piątek",dow:5,focus:"Akcent: objętość, pompa, praca jednostronna",items:[
+ {slot:"power",pat:"Moc",ex:"Kettlebell swing (rosyjski)",xid:"kb_swing",reps:"10",cue:"Napęd z bioder, ramiona są tylko liną. Alternatywa: zarzut hantla z wiszenia 4 × 3."},
+ {slot:"main",pat:"Wzorzec: przysiad",ex:"Przysiad przedni (front squat)",xid:"front_squat",cue:"Łokcie wysoko, tułów pionowo. Mocniej w czworogłowe i tułów, niżej obciąża kręgosłup."},
+ {ss:"Superseria 1 — zawias ⟷ ciągnięcie poziome"},
+ {slot:"ss1",pat:"Wyprost biodra",ex:"Hip thrust ze sztangą",xid:"hip_thrust",reps:"12",cue:"Największy zakres pracy pośladka. Broda schowana, żebra w dół, pauza w górze."},
+ {slot:"ss1",pat:"Ciągnięcie poziome",ex:"Wiosłowanie siedząc, uchwyt V",xid:"seated_row",cue:"Pełne rozciągnięcie najszerszych na początku ruchu."},
+ {ss:"Superseria 2 — pchanie pionowe ⟷ dwugłowe uda"},
+ {slot:"ss2",pat:"Pchanie pionowe",ex:"Wyciskanie hantli siedząc",xid:"db_press_seat",cue:"Lżejsza wersja żołnierskiego — tu chodzi o objętość, nie o rekord."},
+ {slot:"ss2",pat:"Dwugłowe uda",ex:"Uginanie nóg leżąc",xid:"leg_curl",reps:"12–15",cue:"Funkcja kolanowa dwugłowego — RDL i martwy ciąg pokrywają tylko biodrową."},
+ {ss:"Superseria 3 — izolacja"},
+ {slot:"ss3",pat:"Bark boczny",ex:"Wznosy bokiem na wyciągu jednorącz",xid:"lat_raise_cable",reps:"15",cue:"Wyciąg daje napięcie na całym zakresie, także w dolnej fazie."},
+ {slot:"ss3",pat:"Biceps",ex:"Uginanie na modlitewniku",xid:"preacher",reps:"12",cue:"Największe napięcie w rozciągnięciu. Opust 3 sekundy."},
+ {ss:"Finisz — core + łydki"},
+ {slot:"fin",pat:"Łydki",ex:"Wspięcia na palce siedząc",xid:"calf_seat",reps:"15–20",cue:"Wersja siedząca trafia w płaszczkowaty, stojąca w brzuchaty."},
+ {slot:"fin",pat:"Anty-zgięcie boczne",ex:"Plank boczny z uniesieniem biodra",xid:"side_plank",unit:"bw",reps:"12 / stronę",cue:"Alternatywa: spacer farmera jednorącz na 30 m."}]}
+];
+
+/* =================== STAN =================== */
+const el=(id)=>document.getElementById(id);
+const pad=(n)=>String(n).padStart(2,"0");
+const todayISO=()=>{const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());};
+const blockForWeek=(w)=>BLOCKS.find(b=>b.weeks.includes(w))||BLOCKS[0];
+const sessById=(id)=>SESSIONS.find(s=>s.id===id)||SESSIONS[0];
+const allEx=()=>{const m=[];SESSIONS.forEach(s=>s.items.forEach(i=>{if(i.xid)m.push({xid:i.xid,ex:i.ex,sess:s.tag});}));return m;};
+function prescFor(item,blk){
+  const p=blk[item.slot]||{};
+  return {sets:p.sets||0, reps:item.reps||p.reps||"—", rir:p.rir||"—", rest:p.rest||"—"};
+}
+function e1rm(w,r){ if(!w||!r) return 0; return w*(1+r/30); }
+const fmt=(n)=>Number(n).toFixed(1).replace(/\.0$/,"").replace(".",",");
+
+const S={ week:1, date:todayISO(), sess:"A", logs:{}, mode:"init" };
+const docId=()=>S.date+"_"+S.sess;
+
+/* =================== MAGAZYN =================== */
+const LS_KEY="fbw79_logs_v1", LS_META="fbw79_meta_v1";
+let DB=null, saveTimer=null;
+
+function readLocal(){ try{return JSON.parse(localStorage.getItem(LS_KEY)||"{}");}catch(e){return {};} }
+function writeLocal(o){ try{localStorage.setItem(LS_KEY,JSON.stringify(o));}catch(e){} }
+
+function setSync(mode,text){
+  S.mode=mode;
+  const d=el("syncDot");
+  d.className="syncdot"+(mode==="db"?" on":mode==="local"?" local":"");
+  d.querySelector("span").textContent=text;
+}
+
+async function initStore(){
+  let db=null;
+  try{ db = window.claude && claude.use ? await claude.use("db") : null; }catch(e){ db=null; }
+  if(db){
+    DB=db;
+    try{
+      db.collection("log").onSnapshot(snap=>{
+        const next={};
+        snap.docs.forEach(d=>{ if(d.exists) next[d.id]=d.data(); });
+        S.logs=next; renderLog(); renderProgress();
+        setSync("db","zapis w chmurze · synchronizacja");
+      }, err=>{ fallbackLocal(); });
+      const metaDoc=await db.doc("meta/state").get();
+      if(metaDoc.exists && metaDoc.data() && metaDoc.data().week){
+        S.week=metaDoc.data().week; el("selWeek").value=String(S.week); onWeekChange(true);
+      }
+    }catch(e){ fallbackLocal(); }
+  } else fallbackLocal();
+}
+function fallbackLocal(){
+  DB=null; S.logs=readLocal();
+  try{ const m=JSON.parse(localStorage.getItem(LS_META)||"{}"); if(m.week){S.week=m.week; el("selWeek").value=String(S.week); onWeekChange(true);} }catch(e){}
+  renderLog(); renderProgress();
+  setSync("local","zapis lokalny · tylko to urządzenie");
+}
+
+function saveSession(){
+  const id=docId();
+  const body=S.logs[id];
+  el("saveState").textContent="zapisywanie…";
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(async()=>{
+    if(DB){
+      try{ await DB.doc("log/"+id).set(body); el("saveState").textContent="zapisano "+new Date().toLocaleTimeString("pl-PL",{hour:"2-digit",minute:"2-digit"}); }
+      catch(e){ el("saveState").textContent="błąd zapisu — spróbuj ponownie"; }
+    } else { writeLocal(S.logs); el("saveState").textContent="zapisano lokalnie"; }
+    renderProgress();
+  },700);
+}
+function saveMeta(){
+  if(DB){ DB.doc("meta/state").set({week:S.week}).catch(()=>{}); }
+  else { try{localStorage.setItem(LS_META,JSON.stringify({week:S.week}));}catch(e){} }
+}
+
+/* =================== HISTORIA / POPRZEDNI RAZ =================== */
+function historyFor(xid){
+  const out=[];
+  Object.keys(S.logs).forEach(id=>{
+    const doc=S.logs[id]; if(!doc||!doc.entries) return;
+    const sets=(doc.entries[xid]||[]).filter(s=>s && s.w>0 && s.r>0);
+    if(!sets.length) return;
+    let best=null;
+    sets.forEach(s=>{ const e=e1rm(s.w,s.r); if(!best||e>best.e) best={e:e,w:s.w,r:s.r,rir:s.rir}; });
+    out.push({date:doc.date||id.split("_")[0], week:doc.week, sess:doc.session, sets:sets, best:best});
+  });
+  out.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
+  return out;
+}
+function lastBefore(xid,date){
+  const h=historyFor(xid).filter(x=>x.date<date);
+  return h.length?h[h.length-1]:null;
+}
+
+/* =================== RENDER: DZIENNIK =================== */
+function ensureEntry(xid,count){
+  const id=docId();
+  if(!S.logs[id]) S.logs[id]={date:S.date,session:S.sess,week:S.week,entries:{},note:""};
+  const d=S.logs[id];
+  d.date=S.date; d.session=S.sess; d.week=S.week;
+  if(!d.entries) d.entries={};
+  if(!d.entries[xid]) d.entries[xid]=[];
+  while(d.entries[xid].length<count) d.entries[xid].push({w:null,r:null,rir:null});
+  return d.entries[xid];
+}
+
+function renderLog(){
+  const s=sessById(S.sess), blk=blockForWeek(S.week);
+  el("logTag").textContent=s.tag;
+  el("logDay").textContent=s.day;
+  el("logFocus").textContent=s.focus;
+  el("blockLabel").textContent="Blok "+blk.id+" · "+blk.name+" · tydzień "+S.week;
+
+  const host=el("logRows"); host.textContent="";
+  const doc=S.logs[docId()];
+
+  s.items.forEach(item=>{
+    if(item.ss){
+      const b=document.createElement("div"); b.className="ssbar"; b.textContent=item.ss; host.appendChild(b); return;
+    }
+    const p=prescFor(item,blk);
+    if(p.sets===0) return;
+
+    const row=document.createElement("div");
+    row.className="logrow"+(item.slot.startsWith("ss")||item.slot==="fin"?" super":"");
+
+    const top=document.createElement("div"); top.className="top";
+    const left=document.createElement("div");
+    left.innerHTML='<span class="pat"></span><span class="ex"></span>';
+    left.querySelector(".pat").textContent=item.pat;
+    left.querySelector(".ex").textContent=item.ex;
+    const rx=document.createElement("div"); rx.className="rx";
+    rx.innerHTML="<b></b>";
+    rx.querySelector("b").textContent=p.sets+" × "+p.reps;
+    rx.append(document.createTextNode(p.rir!=="—"?"  RIR "+p.rir:""));
+    const slotTag=document.createElement("div");
+    slotTag.className="pat"; slotTag.style.marginTop="3px"; slotTag.style.textAlign="right";
+    slotTag.textContent=SLOT_LABEL[item.slot];
+    rx.appendChild(slotTag);
+    top.append(left,rx); row.appendChild(top);
+
+    const cue=document.createElement("div"); cue.className="cue"; cue.textContent=item.cue+(p.rest&&p.rest!=="—"?"  ·  przerwa "+p.rest:"");
+    row.appendChild(cue);
+
+    const prev=lastBefore(item.xid,S.date);
+    const pv=document.createElement("div"); pv.className="prev";
+    if(prev){
+      const txt=prev.sets.map(x=>x.w+"×"+x.r+(x.rir!=null&&x.rir!==""?"@"+x.rir:"")).join("  ·  ");
+      pv.innerHTML="Ostatnio ("+prev.date+"): <b></b>";
+      pv.querySelector("b").textContent=txt;
+    } else { pv.textContent="Brak wcześniejszego zapisu — to jest twoja baza."; }
+    row.appendChild(pv);
+
+    const heads=document.createElement("div"); heads.className="setheads";
+    const unitLabel=item.unit==="m"?"cm / m":item.unit==="bw"?"+ kg":"kg";
+    ["#",unitLabel,"powt.","RIR"].forEach(t=>{const sp=document.createElement("span");sp.textContent=t;heads.appendChild(sp);});
+    const spx=document.createElement("span"); spx.textContent="e1RM"; spx.style.textAlign="right"; heads.appendChild(spx);
+    row.appendChild(heads);
+
+    const wrapSets=document.createElement("div"); wrapSets.className="sets";
+    const arr=(doc&&doc.entries&&doc.entries[item.xid])||[];
+    for(let i=0;i<p.sets;i++){
+      const cur=arr[i]||{w:null,r:null,rir:null};
+      const line=document.createElement("div"); line.className="setline";
+      const sn=document.createElement("span"); sn.className="sn"; sn.textContent=i+1; line.appendChild(sn);
+
+      const mk=(key,ph,step)=>{
+        const inp=document.createElement("input");
+        inp.type="number"; inp.inputMode="decimal"; inp.step=step; inp.min="0";
+        inp.placeholder=ph;
+        inp.value=(cur[key]===null||cur[key]===undefined)?"":cur[key];
+        inp.setAttribute("aria-label",item.ex+" seria "+(i+1)+" "+ph);
+        inp.addEventListener("input",()=>{
+          const list=ensureEntry(item.xid,p.sets);
+          const v=inp.value===""?null:parseFloat(inp.value.replace(",","."));
+          list[i][key]=(v!==null&&!isNaN(v))?v:null;
+          line.querySelector(".e1").textContent=list[i].w&&list[i].r?fmt(e1rm(list[i].w,list[i].r)):"";
+          saveSession();
+        });
+        return inp;
+      };
+      line.appendChild(mk("w",unitLabel,"0.5"));
+      line.appendChild(mk("r","powt.","1"));
+      line.appendChild(mk("rir","RIR","1"));
+      const e=document.createElement("span"); e.className="e1";
+      e.textContent=cur.w&&cur.r?fmt(e1rm(cur.w,cur.r)):"";
+      line.appendChild(e);
+      wrapSets.appendChild(line);
+    }
+    row.appendChild(wrapSets);
+    host.appendChild(row);
+  });
+
+  const nrow=document.createElement("div"); nrow.className="logrow";
+  const nl=document.createElement("span"); nl.className="pat"; nl.textContent="Notatka z sesji";
+  const ta=document.createElement("textarea"); ta.className="notefield"; ta.rows=2;
+  ta.placeholder="Samopoczucie, sen, co bolało, co poszło lepiej niż zwykle…";
+  ta.value=(doc&&doc.note)||"";
+  ta.addEventListener("input",()=>{
+    const id=docId();
+    if(!S.logs[id]) S.logs[id]={date:S.date,session:S.sess,week:S.week,entries:{},note:""};
+    S.logs[id].note=ta.value; saveSession();
+  });
+  nrow.append(nl,ta); host.appendChild(nrow);
+}
+
+/* =================== RENDER: SESJE REFERENCYJNE =================== */
+function renderRefSessions(){
+  const blk=blockForWeek(S.week);
+  el("sesLabel").textContent="ustawienia bloku "+blk.id+" · "+blk.name;
+  const host=el("refSessions"); host.textContent="";
+  SESSIONS.forEach(s=>{
+    const art=document.createElement("article"); art.className="session";
+    const hd=document.createElement("header");
+    hd.innerHTML='<div class="lhs"><span class="sess-tag"></span><span class="sess-day"></span></div><span class="sess-focus"></span>';
+    hd.querySelector(".sess-tag").textContent=s.tag;
+    hd.querySelector(".sess-day").textContent=s.day;
+    hd.querySelector(".sess-focus").textContent=s.focus;
+    art.appendChild(hd);
+    s.items.forEach(item=>{
+      if(item.ss){const b=document.createElement("div");b.className="ssbar";b.textContent=item.ss;art.appendChild(b);return;}
+      const p=prescFor(item,blk);
+      const r=document.createElement("div");
+      r.className="row"+(item.slot.startsWith("ss")||item.slot==="fin"?" super":"");
+      const l=document.createElement("div");
+      l.innerHTML='<span class="pat"></span><span class="ex"></span><div class="cue"></div>';
+      l.querySelector(".pat").textContent=item.pat;
+      l.querySelector(".ex").textContent=item.ex;
+      l.querySelector(".cue").textContent=item.cue;
+      const ld=document.createElement("div"); ld.className="load";
+      if(p.sets===0){ ld.innerHTML="<b>—</b><br>poza tym blokiem"; }
+      else{
+        ld.innerHTML="<b></b>"+(p.rir!=="—"?" · RIR "+p.rir:"")+"<br>przerwa "+p.rest;
+        ld.querySelector("b").textContent=p.sets+" × "+p.reps;
+      }
+      r.append(l,ld); art.appendChild(r);
+    });
+    host.appendChild(art);
+  });
+}
+
+/* =================== RENDER: TABELA BLOKÓW =================== */
+function renderBlockTable(){
+  const tb=el("blockTable"); tb.textContent="";
+  BLOCKS.forEach(b=>{
+    const tr=document.createElement("tr");
+    const th=document.createElement("th");
+    const c=document.createElement("span"); c.className="chip "+b.chip; c.textContent="Blok "+b.id+" · "+b.name;
+    th.appendChild(c); tr.appendChild(th);
+    const cells=[
+      b.weeks.length>1?b.weeks[0]+"–"+b.weeks[b.weeks.length-1]:String(b.weeks[0]),
+      b.main.sets+" × "+b.main.reps+"  RIR "+b.main.rir,
+      b.ss1.sets?b.ss1.sets+" × "+b.ss1.reps+"  RIR "+b.ss1.rir:"—",
+      b.ss2.sets?b.ss2.sets+" × "+b.ss2.reps+"  RIR "+b.ss2.rir:"—",
+      b.ss3.sets?b.ss3.sets+" × "+b.ss3.reps+"  RIR "+b.ss3.rir:"—",
+      b.main.rest+" / "+(b.ss1.rest||"—")
+    ];
+    cells.forEach(t=>{const td=document.createElement("td");td.className="num";td.textContent=t;tr.appendChild(td);});
+    tb.appendChild(tr);
+  });
+}
+
+/* =================== RENDER: PROGRES =================== */
+function renderProgress(){
+  const xid=el("selEx").value;
+  const h=historyFor(xid);
+  const host=el("chartHost"); host.textContent="";
+  const stats=el("progStats"); stats.textContent="";
+  const hist=el("histBox"); hist.textContent="";
+
+  if(!h.length){
+    const d=document.createElement("div"); d.className="empty";
+    d.textContent="Brak zapisów dla tego ćwiczenia — wpisz pierwszą sesję w dzienniku.";
+    host.appendChild(d); hist.style.display="none"; return;
+  }
+  hist.style.display="";
+
+  const pts=h.map(x=>({date:x.date, v:x.best.e, w:x.best.w, r:x.best.r}));
+  const first=pts[0].v, last=pts[pts.length-1].v;
+  const maxW=Math.max.apply(null,h.map(x=>x.best.w));
+  const delta=first>0?((last-first)/first*100):0;
+
+  const mk=(lab,val)=>{const d=document.createElement("div");d.innerHTML="<b></b>"+lab;d.querySelector("b").textContent=val;return d;};
+  stats.append(
+    mk("aktualny e1RM", fmt(last)+" kg"),
+    mk("najcięższa seria", fmt(maxW)+" kg"),
+    mk("zmiana od startu", (delta>=0?"+":"")+fmt(delta)+"%"),
+    mk("sesje z zapisem", String(h.length))
+  );
+
+  // wykres
+  const W=760,H=250,mL=52,mR=18,mT=18,mB=44;
+  const iw=W-mL-mR, ih=H-mT-mB;
+  const vals=pts.map(p=>p.v);
+  let lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals);
+  if(hi-lo<4){ lo-=2; hi+=2; }
+  const padv=(hi-lo)*0.12; lo=Math.max(0,lo-padv); hi=hi+padv;
+  const X=i=>mL+(pts.length===1?iw/2:iw*i/(pts.length-1));
+  const Y=v=>mT+ih-((v-lo)/(hi-lo))*ih;
+
+  const NS="http://www.w3.org/2000/svg";
+  const svg=document.createElementNS(NS,"svg");
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("role","img");
+  svg.setAttribute("aria-label","Szacowany 1RM w czasie");
+
+  const css=getComputedStyle(document.body);
+  const cInk=css.getPropertyValue("--ink").trim()||"#12161B";
+  const cInk3=css.getPropertyValue("--ink-3").trim()||"#7C858F";
+  const cLine=css.getPropertyValue("--line-soft").trim()||"#E0E4EA";
+  const cAcc=css.getPropertyValue("--accent").trim()||"#1D5FA5";
+
+  // siatka + oś Y
+  const ticks=4;
+  for(let t=0;t<=ticks;t++){
+    const v=lo+(hi-lo)*t/ticks, y=Y(v);
+    const ln=document.createElementNS(NS,"line");
+    ln.setAttribute("x1",mL);ln.setAttribute("x2",W-mR);ln.setAttribute("y1",y);ln.setAttribute("y2",y);
+    ln.setAttribute("stroke",cLine);ln.setAttribute("stroke-width","1");
+    svg.appendChild(ln);
+    const tx=document.createElementNS(NS,"text");
+    tx.setAttribute("x",mL-9);tx.setAttribute("y",y+4);tx.setAttribute("text-anchor","end");
+    tx.setAttribute("fill",cInk3);tx.setAttribute("font-size","11");
+    tx.setAttribute("font-family","IBM Plex Mono, monospace");
+    tx.textContent=fmt(v);
+    svg.appendChild(tx);
+  }
+  // linia
+  if(pts.length>1){
+    const d=pts.map((p,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(p.v).toFixed(1)).join(" ");
+    const path=document.createElementNS(NS,"path");
+    path.setAttribute("d",d);path.setAttribute("fill","none");
+    path.setAttribute("stroke",cAcc);path.setAttribute("stroke-width","2");
+    path.setAttribute("stroke-linejoin","round");path.setAttribute("stroke-linecap","round");
+    svg.appendChild(path);
+  }
+  // punkty + etykiety X
+  pts.forEach((p,i)=>{
+    const c=document.createElementNS(NS,"circle");
+    c.setAttribute("cx",X(i));c.setAttribute("cy",Y(p.v));
+    c.setAttribute("r",i===pts.length-1?5:3.2);
+    c.setAttribute("fill",i===pts.length-1?cAcc:css.getPropertyValue("--surface").trim()||"#fff");
+    c.setAttribute("stroke",cAcc);c.setAttribute("stroke-width","2");
+    svg.appendChild(c);
+    const every=Math.ceil(pts.length/7);
+    if(i%every===0||i===pts.length-1){
+      const tx=document.createElementNS(NS,"text");
+      tx.setAttribute("x",X(i));tx.setAttribute("y",H-mB+20);tx.setAttribute("text-anchor","middle");
+      tx.setAttribute("fill",cInk3);tx.setAttribute("font-size","10.5");
+      tx.setAttribute("font-family","IBM Plex Mono, monospace");
+      tx.textContent=p.date.slice(5);
+      svg.appendChild(tx);
+    }
+  });
+  // etykieta ostatniego punktu
+  const lastLab=document.createElementNS(NS,"text");
+  const lx=X(pts.length-1), ly=Y(last);
+  lastLab.setAttribute("x",lx>W-90?lx-10:lx+10);
+  lastLab.setAttribute("y",ly-10);
+  lastLab.setAttribute("text-anchor",lx>W-90?"end":"start");
+  lastLab.setAttribute("fill",cInk);lastLab.setAttribute("font-size","12");
+  lastLab.setAttribute("font-weight","600");
+  lastLab.setAttribute("font-family","IBM Plex Mono, monospace");
+  lastLab.textContent=fmt(last)+" kg";
+  svg.appendChild(lastLab);
+  host.appendChild(svg);
+
+  // tabela historii
+  const tbl=document.createElement("table");
+  tbl.innerHTML="<thead><tr><th>Data</th><th>Tydz.</th><th>Sesja</th><th>Serie</th><th>Najlepsza</th><th>e1RM</th></tr></thead>";
+  const tb=document.createElement("tbody");
+  h.slice().reverse().forEach(x=>{
+    const tr=document.createElement("tr");
+    const cells=[
+      x.date, x.week?String(x.week):"—", x.sess?sessById(x.sess).tag:"—",
+      x.sets.map(s=>s.w+"×"+s.r+(s.rir!=null&&s.rir!==""?"@"+s.rir:"")).join("  ·  "),
+      x.best.w+" kg × "+x.best.r, fmt(x.best.e)+" kg"
+    ];
+    cells.forEach((t,i)=>{
+      const c=document.createElement(i===0?"th":"td");
+      if(i!==3) c.className="num";
+      c.textContent=t; tr.appendChild(c);
+    });
+    tb.appendChild(tr);
+  });
+  tbl.appendChild(tb); hist.appendChild(tbl);
+}
+
+/* =================== CSV =================== */
+function buildCsv(){
+  const lines=["data;tydzien;sesja;cwiczenie;seria;ciezar_kg;powtorzenia;rir;e1rm;notatka"];
+  const names={}; allEx().forEach(e=>names[e.xid]=e.ex);
+  Object.keys(S.logs).sort().forEach(id=>{
+    const d=S.logs[id]; if(!d||!d.entries) return;
+    Object.keys(d.entries).forEach(xid=>{
+      (d.entries[xid]||[]).forEach((s,i)=>{
+        if(!s||(s.w==null&&s.r==null)) return;
+        lines.push([d.date||"",d.week||"",d.session||"",(names[xid]||xid),i+1,
+          s.w??"",s.r??"",s.rir??"",(s.w&&s.r)?e1rm(s.w,s.r).toFixed(1):"",
+          (d.note||"").replace(/[;\n\r]/g," ")].join(";"));
+      });
+    });
+  });
+  return lines.join("\n");
+}
+async function exportCsv(){
+  const csv="﻿"+buildCsv();
+  let dl=null;
+  try{ dl = window.claude && claude.use ? await claude.use("downloads") : null; }catch(e){}
+  if(dl){
+    try{ await dl.save({filename:"cykl-fbw-79-log.csv",data:csv}); el("saveState").textContent="CSV zapisany"; return; }
+    catch(e){ /* przechodzimy do kopiowania */ }
+  }
+  try{ await navigator.clipboard.writeText(csv); el("saveState").textContent="CSV skopiowany do schowka"; }
+  catch(e){ el("saveState").textContent="nie udało się wyeksportować"; }
+}
+
+/* =================== ZDARZENIA =================== */
+function onWeekChange(silent){
+  S.week=parseInt(el("selWeek").value,10)||1;
+  if(!silent) saveMeta();
+  renderLog(); renderRefSessions();
+}
+function initControls(){
+  const sw=el("selWeek");
+  for(let w=1;w<=12;w++){
+    const b=blockForWeek(w);
+    const o=document.createElement("option"); o.value=String(w);
+    o.textContent="Tydzień "+w+" — blok "+b.id+" ("+b.name+")";
+    sw.appendChild(o);
+  }
+  const ss=el("selSess");
+  SESSIONS.forEach(s=>{const o=document.createElement("option");o.value=s.id;o.textContent=s.tag+" — "+s.day;ss.appendChild(o);});
+  const ex=el("selEx");
+  SESSIONS.forEach(s=>{
+    const g=document.createElement("optgroup"); g.label=s.tag+" — "+s.day;
+    s.items.forEach(i=>{ if(!i.xid) return; const o=document.createElement("option"); o.value=i.xid; o.textContent=i.ex; g.appendChild(o); });
+    ex.appendChild(g);
+  });
+  ex.value="back_squat";
+
+  el("selDate").value=S.date;
+  const dow=new Date(S.date+"T12:00:00").getDay();
+  const match=SESSIONS.find(s=>s.dow===dow);
+  S.sess=match?match.id:"A";
+  ss.value=S.sess;
+  sw.value=String(S.week);
+
+  sw.addEventListener("change",()=>onWeekChange(false));
+  ss.addEventListener("change",()=>{S.sess=ss.value;renderLog();});
+  el("selDate").addEventListener("change",()=>{
+    S.date=el("selDate").value||todayISO();
+    const d=new Date(S.date+"T12:00:00").getDay();
+    const m=SESSIONS.find(x=>x.dow===d);
+    if(m){S.sess=m.id;ss.value=m.id;}
+    renderLog();
+  });
+  ex.addEventListener("change",renderProgress);
+  el("btnCsv").addEventListener("click",exportCsv);
+  el("btnClear").addEventListener("click",()=>{
+    const id=docId();
+    if(!S.logs[id]) return;
+    delete S.logs[id];
+    if(DB){ DB.doc("log/"+id).delete().catch(()=>{}); } else writeLocal(S.logs);
+    el("saveState").textContent="sesja wyczyszczona";
+    renderLog(); renderProgress();
+  });
+}
+
+/* =================== START =================== */
+initControls();
+renderBlockTable();
+renderLog();
+renderRefSessions();
+renderProgress();
+setSync("init","łączenie…");
+initStore();
+</script>
