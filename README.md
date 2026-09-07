@@ -3,7 +3,7 @@
 12-tygodniowy plan treningowy Full Body Workout — 4 sesje w tygodniu (A / B / A′ / B′),
 trzy bloki progresji, wbudowany dziennik treningowy i wykres szacowanego 1RM.
 
-**Strona:** https://USER.github.io/REPO/
+**Strona:** https://tomaszswiadomosc.github.io/fbw/
 
 ## Co jest w środku
 
